@@ -1,0 +1,61 @@
+/* Installation of all fonts in use. Update url reference to server location. */
+/* Note to becca: add credits for fonts. */
+
+/* Authentic Sans */
+@font-face {
+    font-family: 'Authentic Sans';
+    src: url('../fonts/authentic-sans-pro-90.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Authentic Sans';
+    src: url('../fonts/authentic-sans-pro-130.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* Authentic Sans Condensed */
+@font-face {
+    font-family: 'Authentic Sans Condensed';
+    src: url('../fonts/authentic-sans-pro-condensed-90.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Authentic Sans Condensed';
+    src: url('../fonts/authentic-sans-pro-condensed-130.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* New Computer Modern Mono */
+@font-face {
+    font-family: 'New Computer Modern Mono';
+    src: url('../fonts/NewCMMono10-Book.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'New Computer Modern Mono';
+    src: url('../fonts/NewCMMono10-BookItalic.otf') format('opentype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'New Computer Modern Mono';
+    src: url('../fonts/NewCMMono10-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'New Computer Modern Mono';
+    src: url('../fonts/NewCMMono10-BoldOblique.otf') format('opentype');
+    font-weight: 700;
+    font-style: italic;
+}

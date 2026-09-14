@@ -1,0 +1,24 @@
+project:
+  type: website
+  resources: images
+  output-dir: docs
+
+website:
+  navbar: false
+  favicon: images/logos/RADAR.svg
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css:
+      - style/cil-theme.css
+    toc: false
+    include-before-body: radar-header.html
+    include-after-body: radar-footer.html
+    fig-format: svg
+    fig-dpi: 300
+    fig-width: 12
+    fig-asp: 0.618
+execute:
+  freeze: false

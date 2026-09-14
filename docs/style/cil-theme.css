@@ -1,0 +1,533 @@
+@import url(fonts.css);
+@import url(variables.css);
+
+/* Globals */
+* {
+    padding: 0;
+    margin: 0;
+}
+
+main, figure {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 10vw repeat(9, 1fr) 10vw;
+    gap: 0 16px;
+}
+
+p:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+a:link, a:visited {
+    color: var(--cil-blue);
+    text-underline-offset: 2px;
+}
+
+a:hover {
+    color: var(--gray);
+}
+
+a.jump {
+    text-decoration: none;
+    font-size: 19px;
+    padding-left: 3px;
+}
+
+ul {
+    padding-left: 16px;
+}
+
+code {
+    font-family: 'New Computer Modern Mono';
+    -webkit-font-smoothing: antialiased;
+}
+
+p code:not(.sourceCode), li code:not(.sourceCode), td code:not(.sourceCode) {
+    border-radius: 4px;
+    padding: 1px 4px 1px 4px;
+    color: rgba(11,11,11,0.82);
+    font-size: 16px;
+}
+
+sup {
+    padding: 0 2px;
+}
+
+.blockquote {
+    color: var(--black);
+    padding: 0 16px;
+    margin: 16px 0;
+}
+
+.fine-print {
+    font-size: 11px;
+    line-height: 16px;
+}
+
+/* Components */
+.code-fold summary {
+    list-style: none;   
+    font-size: 13px;
+    line-height: 13px;
+    color: var(--gray);
+    width: fit-content;
+    height: fit-content;
+    padding: 8px 8px 6px 8px;
+    border: 1px solid var(--gray);
+    border-radius: 4px;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+    .code-fold summary:hover {
+        background-color: var(--vellum);
+    }
+
+    .code-fold summary:active {
+        margin-top: 1px;
+        margin-bottom: -1px;
+    }
+
+    .code-fold[open] summary {
+        background-color: var(--vellum);
+        color: var(--black);
+    }
+
+    .clipboard {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        font-size: 11px;
+        line-height: 11px;
+        color: var(--gray);
+        border: 1px solid var(--gray);
+        border-radius: 4px;
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    .clipboard:hover {
+        background-color: #fff;
+    }
+
+    .clipboard:active {
+        margin-top: 1px;
+        margin-bottom: -1px;
+        color: #000;
+    }
+
+table {
+    font-size: 13px;
+    line-height: 16px;
+    text-align: left;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+    tr {
+        border-bottom: 1px solid var(--black);
+    }
+
+        th {
+            padding: 0px 16px 4px 0;
+            vertical-align: top;
+        }
+        
+        td {
+            padding: 8px 16px 4px 0;
+            vertical-align: top;
+        }
+
+        th:last-child, td:last-child {
+            padding-right: 0;
+        }
+
+    tbody {
+        counter-reset: rowNumber;
+    }
+
+    tbody tr::before {
+        display: table-cell;
+        counter-increment: rowNumber;
+        content: counter(rowNumber) ".";
+        padding-top: 8px;
+    }
+
+    /* flextable emits a real <thead>, so the counter above would add a phantom
+       cell to body rows only, shifting every column one position. */
+    .scroll-output tbody tr::before {
+        display: none;
+        content: none;
+    }
+
+figure.chart {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+figure.chart img {
+    width: 100%;
+    max-width: 912px;
+}
+
+/* Layout */
+html {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+body {
+    color: var(--black);
+    font-family: 'Authentic Sans';
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.008em;
+    margin: 32px !important;
+    padding-top: 48px !important;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+#quarto-content {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: 0 16px;
+}
+
+#quarto-document-content {
+    grid-column: 2/11;
+}
+
+header.cil-header {
+    position: fixed;
+    max-width: 1200px;
+    margin: 0 auto;
+    top: 32px;
+    left: 32px;
+    right: 32px;
+    z-index: 10000;
+}
+
+    header.cil-header a:link {
+        text-decoration: none;
+    }
+
+    header.cil-header li a:hover {
+        background-color: var(--vellum);
+        color: var(--cil-blue);
+    }
+
+    .radar-logo-lockup {
+        color: var(--cil-blue);
+        font-size: 13px;
+        line-height: 16px;
+        display: flex;
+        gap: 16px;
+    }
+
+        .radar-logo-lockup img {
+            width: 26.451px;
+            height: 42.088px;
+            background-color: #fff;
+        }
+
+    ul.title-cascade {
+        list-style: none;
+        margin-top: -1.5px;
+        padding: 0;
+    } 
+
+    ul.title-cascade li {
+        background-color: #fff;
+        width: fit-content;
+    } 
+
+#title-block-header {
+    margin-block-end: 0;
+}
+
+/* Headings */
+/* Cosmo underlines every h2 and dims h4-h6 to .9. Reset at the group level so
+   no level can reintroduce a rule. */
+h1, h2, h3, h4, h5, h6 {
+    border-bottom: none;
+    padding-bottom: 0;
+    color: var(--black);
+    opacity: 1;
+    text-wrap: balance;
+}
+
+.quarto-title {
+    padding: 64px 0 24px 0;
+}
+
+    .quarto-title .title {
+        font-size: 24px;
+        line-height: 28px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        margin: 0;
+    }
+
+    /* Quarto pads .subtitle from #quarto-content, so the id has to be in the
+       selector to outrank it. */
+    #quarto-content .quarto-title .subtitle {
+        font-size: 19px;
+        line-height: 26px;
+        font-weight: 400;
+        letter-spacing: 0;
+        color: var(--black);
+        margin: 8px 0 0 0;
+        padding-top: 0;
+    }
+
+/* Space is asymmetric on purpose: a heading sits closer to the section it
+   opens than to the one it closes. */
+h1 {
+    font-size: 22px;
+    line-height: 28px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 32px 0 16px 0;
+}
+
+h2 {
+    font-size: 19px;
+    line-height: 26px;
+    font-weight: 600;
+    letter-spacing: 0;
+    margin: 48px 0 16px 0;
+}
+
+h3 {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+    letter-spacing: 0.008em;
+    margin: 32px 0 8px 0;
+}
+
+/* Bottom rung is a label, not a heading. It reuses the 13/16 tier the lockups
+   and tables already use, and separates by case, not size. */
+h4 {
+    font-size: 13px;
+    line-height: 16px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin: 24px 0 8px 0;
+}
+
+/* .quarto-title already pads 24px below; padding blocks the collapse that
+   would otherwise absorb the first heading's margin. */
+#quarto-document-content > section:first-child > :is(h1, h2, h3, h4):first-child {
+    margin-top: 0;
+}
+
+.radar-body {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+    .cell {
+        margin: 32px 0;
+    }
+
+    div.code-copy-outer-scaffold {
+        margin-top: 8px;
+    }
+
+    .sourceCode {
+        overflow: visible;
+    }
+
+    div.sourceCode {
+        background-color: var(--vellum);
+        border: 1px solid var(--gray);
+        border-radius: 4px;
+        scrollbar-width: thin;
+        padding: 0;
+        margin: 0;
+    }
+
+    pre code {
+        font-family: 'New Computer Modern Mono';
+        font-size: 16px;
+        line-height: 19px;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    pre>code.sourceCode {
+        padding: 8px 0;
+    }
+
+    pre > code.sourceCode > span {
+        display: inline-block;
+        line-height: 19px;
+        padding: 0 16px 0 8px;
+    }
+
+    .code-copy-button {
+        margin-top: 16px;
+        margin-right: 16px;
+        background-color: rgba(0,0,0,0);
+        z-index: 3;
+    }
+
+    .code-copy-button svg:hover {
+        color: var(--cil-blue);
+    }
+
+    .cell-output-display {
+        padding: 32px 0 0 0;
+    }
+
+    .maplibregl-map {
+        height: auto !important;
+        aspect-ratio: 5/4;
+        max-height: 800px;
+    }
+
+    .figure-img {
+        padding: 16px 0;
+    }
+
+    .scroll-output {
+        overflow-x: auto;
+        overflow-y: auto;
+        max-height: 400px;
+        max-width: 100%;
+        padding: 0 0 0.5rem 0.5rem;
+        border-top: 0.5rem solid #ffffff;
+        background-color: #ffffff;
+        color: #141414;
+    }
+
+    /* The global `table-layout: fixed` above caps these tables at the container
+       and squeezes every column to an equal share. Auto layout alone isn't
+       enough where cil_table() sets explicit widths — those also need an
+       intrinsic width to survive, and the container then scrolls. */
+    .scroll-output table {
+        table-layout: auto;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    .scroll-output--fit table {
+        width: max-content;
+    }
+
+    /* dim_pretty() estimates header widths a hair under what the browser
+       renders, so computed widths alone still wrap. A column narrower than its
+       header grows to fit it. */
+    .scroll-output thead th {
+        white-space: nowrap;
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background-color: #ffffff;
+    }
+
+    .scroll-output::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    .scroll-output::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .scroll-output::-webkit-scrollbar-thumb {
+        background-color: #ccc;
+        border-radius: 3px;
+    }
+
+    #quarto-appendix.default {
+        border-top: none;
+        margin-top: 0;
+        padding-top: 32px;
+    }
+
+    .tippy-box {
+        max-width: 416px !important;
+        background-color: var(--vellum) !important;
+        border: 1px solid var(--gray) !important;
+    }
+
+        .tippy-content {
+            padding: 8px;
+        }
+
+        .tippy-content p {
+            font-size: 0.9em;
+        }
+
+    .footnotes {
+        margin: 16px 0;
+        font-size: 15px;
+    }
+
+    #quarto-appendix.default .quarto-appendix-heading {
+        font-weight: normal;
+        padding-bottom: 16px;
+    }
+
+    #quarto-appendix.default ol li p {
+        font: 15px !important;
+    }
+
+    ul.footnotes-body {
+        list-style: none;
+        grid-column: 1/6;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+footer {
+    grid-column: 2/11 !important;
+    color: var(--cil-blue);
+    padding-top: 32px !important;
+    padding-bottom: 32px;
+}
+
+    footer a:link {
+        text-decoration: none;
+    }
+
+    footer span a:hover {
+        background-color: var(--vellum);
+        color: var(--cil-blue);
+    }
+
+    .cil-logo-lockup {
+        color: var(--cil-blue);
+        font-size: 13px;
+        line-height: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+        .cil-logo-lockup img {
+            width: 47.654px;
+            height: 21.218px;
+        }
+
+
+@media screen and (max-width: 960px) {
+    #quarto-document-content {
+        grid-column: 1/-1;
+    }
+
+    footer {
+        grid-column: 1/-1 !important;
+    }
+}
