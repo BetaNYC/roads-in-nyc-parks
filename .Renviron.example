@@ -1,0 +1,10 @@
+# Socrata
+soc_api_key_id=
+soc_api_key_secret=
+
+# Database
+PGHOST=
+PGPORT=
+PGUSER=
+PGPASSWORD=
+PGDATABASE=

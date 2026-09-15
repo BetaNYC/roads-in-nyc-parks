@@ -522,8 +522,17 @@ footer {
     padding-bottom: 32px;
 }
 
-    footer a:link {
+    footer a:link, footer a:visited {
         text-decoration: none;
+    }
+
+    /* Copyright on the left, source code link on the right. Wraps to
+       two lines when there isn't room for both. */
+    .footer-fine-print {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 4px 16px;
     }
 
     footer span a:hover {

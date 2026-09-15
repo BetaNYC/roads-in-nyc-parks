@@ -1,0 +1,482 @@
+gispropnum,signname,borough,typecategory,subcategory,acres,road_segments
+B223DA,Adam Yauch Park,B,Playground,Neighborhood Plgd,1.363,9
+B223I,Anchorage Plaza,B,Triangle/Plaza,Sitting Area/Triangle/Mall,2.2,28
+B568,Ashford Street Abundant Garden,B,Garden,,0.133,1
+B080,Asser Levy Park,B,Community Park,Large Park,21.039,14
+B184,Avenue R Mall,B,Mall,Sitting Area/Triangle/Mall,0.258,3
+B223IB,Bar and Grill Park,B,Parkway,Sitting Area/Triangle/Mall,0.489,2
+B003,Bartel-Pritchard Square,B,Triangle/Plaza,Sitting Area/Triangle/Mall,1.711,10
+B164,Bath Beach Park,B,Playground,Neighborhood Plgd,2.964,3
+B166,Belt Parkway/Shore Parkway,B,Parkway,Large Park,760.43,8355
+B007,Bensonhurst Park,B,Recreational Field/Courts,Large Park,17.5,7
+B008,Betsy Head Park,B,Community Park,Large Park,10.555,8
+B247,Breukelen Ballfields,B,Community Park,Large Park,16.16,6
+B223JC,Bridge Park 3,B,Recreational Field/Courts,Neighborhood Plgd,1.934,5
+B431,Brooklyn Bridge Park,B,Community Park,Large Park,21.377,250
+B223DI,Brooklyn Heights Promenade,B,Triangle/Plaza,Sitting Area/Triangle/Mall,0.138,1
+B223DE,Brooklyn Heights Promenade,B,Triangle/Plaza,Sitting Area/Triangle/Mall,0.21,1
+B223DK,Brooklyn Heights Promenade,B,Triangle/Plaza,Large Park,1.093,5
+B012,Brower Park,B,Neighborhood Park,Large Park,7.047,1
+B270,Brownsville Playground,B,Community Park,Neighborhood Plgd,3.017,1
+B529,Bushwick Inlet Park,B,Neighborhood Park,Neighborhood Park,35.533,3
+B113A,Cadman Plaza Park,B,Neighborhood Park,Large Park,10.384,3
+B219,Callahan-Kelly Playground,B,Community Park,Neighborhood Plgd,3.461,1
+B125,Calvert Vaux Park,B,Recreational Field/Courts,Large Park,85.527,37
+B018,Canarsie Park,B,Community Park,Large Park,132.2,44
+B337,Century Playground,B,Jointly Operated Playground,JOP,2.282,1
+B141,City Line Park,B,Jointly Operated Playground,JOP,6.05,13
+B223NA,Classon Playground,B,Playground,Neighborhood Plgd,2.982,5
+B223IA,Clumber Corner,B,Parkway,Sitting Area/Triangle/Mall,0.947,1
+B128,Colonel David Marcus Playground,B,Playground,Neighborhood Plgd,1.974,2
+B113C,Columbus Park,B,Neighborhood Park,Sitting Area/Triangle/Mall,5.43,7
+B169,Coney Island Beach & Boardwalk,B,Waterfront Facility,Large Park,399.473,72
+B210P,Dan Ross Playground,B,Playground,Neighborhood Plgd,0.256,1
+B255F,Detective Joseph Mayrose Park,B,Neighborhood Park,Sitting Area/Triangle/Mall,1.314,2
+B223B,Dimattina Playground,B,Playground,Neighborhood Plgd,0.52,1
+B223A,Dimattina Playground,B,Recreational Field/Courts,Neighborhood Plgd,1.38,44
+B028,Dyker Beach Park,B,Community Park,Large Park,216.655,15
+B029,Eastern Parkway,B,Parkway,Large Park,63.636,158
+B030,Eastern Parkway Extension,B,Mall,Sitting Area/Triangle/Mall,2.064,147
+B376,Fidler-Wyckoff House Park,B,Historic House Park,Neighborhood Park,1.13,1
+B179,Flatbush Malls,B,Mall,Sitting Area/Triangle/Mall,0.8,6
+B178,Flatbush Malls,B,Mall,Sitting Area/Triangle/Mall,0.73,21
+B032,Fort Greene Park,B,Community Park,Large Park,30.168,2
+B036,Fort Stirling Park,B,Triangle/Plaza,Sitting Area/Triangle/Mall,0.214,1
+B384,Fresh Creek Nature Preserve,B,Nature Area,Large Park,77.044,4
+B223E,Fruit Street Sitting Area,B,Triangle/Plaza,Sitting Area/Triangle/Mall,0.92,2
+B038,Fulton Park,B,Neighborhood Park,Neighborhood Park,1.987,1
+B243,Golconda Playground,B,Neighborhood Park,Neighborhood Plgd,1.5,2
+B040,Grand Army Plaza,B,Triangle/Plaza,Flagship Park,14.257,62
+B401,Grand Ferry Park,B,Neighborhood Park,Neighborhood Park,1.7,1
+B042,Gravesend Park,B,Neighborhood Park,Neighborhood Plgd,6.379,1
+B486,Green Valley Garden,B,Garden,Greenthumb,0.19,1
+B595,Greenpoint Landing,B,Neighborhood Park,Sitting Area/Triangle/Mall,1.486,1
+B130,Greenwood Playground,B,Neighborhood Park,Neighborhood Plgd,3.39,4
+B403,Harmony Park,B,Neighborhood Park,Neighborhood Park,1.56,2
+B210H,Harold Ickes Playground,B,Playground,Neighborhood Plgd,1.816,3
+B223H,Harry Chapin Playground,B,Playground,Neighborhood Plgd,0.3,6
+B047,Highland Park,B,Flagship Park,Large Park,45.059,25
+B223G,Hillside Dog Park,B,Neighborhood Park,Sitting Area/Triangle/Mall,2.06,6
+B210A,John Allen Payne Playground,B,Playground,Neighborhood Plgd,1.51,2
+B210W,John J Carty Park,B,Neighborhood Park,Large Park,8.565,7
+B129,Kaiser Park,B,Community Park,Large Park,26.257,2
+B052,Leif Ericson Park,B,Neighborhood Park,Large Park,16.8,29
+B223U,Lentol Garden,B,Triangle/Plaza,Sitting Area/Triangle/Mall,0.762,3
+B054,Lincoln Terrace / Arthur S. Somers Park,B,Community Park,Large Park,17.14,3
+B112,Lot,B,Lot,Neighborhood Plgd,0.975,5
+B113D,Lot,B,Lot,Sitting Area/Triangle/Mall,2.878,9
+B070,Machate Circle,B,Triangle/Plaza,Type 1,4.32,31
+B251,Manhattan Beach Park,B,Community Park,Large Park,42.941,4
+B223OB,Marcy Park South,B,Recreational Field/Courts,Neighborhood Plgd,0.357,1
+B057,Marine Park,B,Community Park,Large Park,800,474
+B058,McCarren Park,B,Community Park,Large Park,36.493,14
+B166D,McGuire Fields,B,Recreational Field/Courts,Large Park,77.181,44
+B060,McKinley Park,B,Neighborhood Park,Large Park,8.25,1
+B147,Monsignor Crawford Field,B,Recreational Field/Courts,Neighborhood Park,2.291,1
+B135,Newtown Barge Playground,B,Recreational Field/Courts,Neighborhood Plgd,6.235,1
+B536,North 5th Street Pier and Park,B,Waterfront Facility,Sitting Area/Triangle/Mall,3.083,3
+B065,Ocean Parkway Malls,B,Mall,Large Park,140,675
+B434,Old Gravesend Cemetery,B,Cemetery,Cemetery,1.649,1
+B066,Owl's Head Park,B,Neighborhood Park,Large Park,24.218,4
+B406,Paerdegat Basin Park,B,Nature Area,Undeveloped,118.795,33
+B255N,Park,B,Triangle/Plaza,Sitting Area/Triangle/Mall,0.116,1
+B255B,Park,B,Strip,Mall,0.113,1
+B255M,Park,B,Triangle/Plaza,Sitting Area/Triangle/Mall,0.205,1
+B210M,Park,B,Strip,EXWY,0.008,1
+B210D,Park,B,Undeveloped,Sitting Area/Triangle/Mall,1.08,12
+B233,Park,B,Triangle/Plaza,Sitting Area/Triangle/Mall,0.312,6
+B223C,Park,B,Strip,Neighborhood Park,0.003,1
+B587,Park,B,Managed Sites,,9.041,4
+B223JA,Park,B,Triangle/Plaza,Type 1,0.09,1
+B223IC,Park,B,Triangle/Plaza,Sitting Area/Triangle/Mall,0.047,2
+B222,Pierrepont Playground,B,Playground,Neighborhood Plgd,0.503,1
+B073,Prospect Park,B,Flagship Park,Flagship Park,526.25,107
+B265,Rainbow Playground,B,Playground,Neighborhood Plgd,0.46,1
+B126,Red Hook Recreation Area,B,Community Park,Large Park,58.503,27
+B207,Sarsfield Playground,B,Playground,Neighborhood Plgd,0.579,1
+B100,Seth Low Playground/ Bealin Square,B,Neighborhood Park,Neighborhood Plgd,4.945,1
+B393,Sheepshead Bay Piers,B,Waterfront Facility,Neighborhood Park,1.22,5
+B082,Shore Park and Parkway,B,Community Park,Large Park,58,638
+B255K,Sitting Area,B,Triangle/Plaza,Sitting Area/Triangle/Mall,0.93,6
+B371,Spring Creek Park,B,Community Park,REDEC,42.583,69
+B165,Spring Creek Park,B,Nature Area,Large Park,54.963,14
+B223F,Squibb Park,B,Neighborhood Park,Neighborhood Park,0.626,2
+B369,Steeplechase Park,B,Community Park,Large Park,10.01,2
+B223JB,Susan Smith McKinney Steward Park,B,Playground,Neighborhood Plgd,1.884,1
+B381,Thomas Boyland Park,B,Neighborhood Park,Neighborhood Plgd,1.82,1
+B223K,Trinity Park,B,Parkway,Sitting Area/Triangle/Mall,6.3,13
+B050,Van Voorhees Playground,B,Playground,Neighborhood Plgd,5.739,12
+B385,WNYC Transmitter Park,B,Neighborhood Park,Neighborhood Park,6.611,1
+B111A,Washington Skate Park,B,Jointly Operated Playground,JOP,1.549,1
+B254,Wingate Park,B,Jointly Operated Playground,JOP,5.888,2
+M096,Adam Clayton Powell Jr. Malls,M,Mall,Sitting Area/Triangle/Mall,1.679,42
+M004,Allen Street Malls,M,Mall,Sitting Area/Triangle/Mall,1.698,30
+M108Q1,Andrew Haswell Green Park,M,Neighborhood Park,Sitting Area/Triangle/Mall,1.984,20
+M286,Asphalt Green,M,Community Park,Neighborhood Plgd,4.35,2
+M164,Asser Levy Playground,M,Community Park,Neighborhood Plgd,2.436,1
+M283,Battery Park City,M,Community Park,Large Park,26.042,56
+M399,Bella Abzug Park,M,Neighborhood Park,Neighborhood Park,2.592,5
+M091,Bennett Rest,M,Nature Area,Sitting Area/Triangle/Mall,3.567,2
+M214,Blake Hobbs Playground,M,Neighborhood Park,Neighborhood Plgd,1,1
+M007,Bowling Green,M,Triangle/Plaza,Sitting Area/Triangle/Mall,1.016,1
+M094A,Broadway Malls,M,Mall,Sitting Area/Triangle/Mall,1.3,10
+M095A,Broadway Malls,M,Mall,Sitting Area/Triangle/Mall,1.139,12
+M095,Broadway Malls,M,Mall,Sitting Area/Triangle/Mall,2.198,19
+M094,Broadway Malls,M,Mall,Sitting Area/Triangle/Mall,5.754,277
+M127,Bushman Steps,M,Triangle/Plaza,Undeveloped,0.08,2
+M379,Canal Park,M,Neighborhood Park,Sitting Area/Triangle/Mall,0.669,1
+M081,Carl Schurz Park,M,Neighborhood Park,Large Park,14.938,12
+M178,Catherine Slip Malls,M,Mall,Sitting Area/Triangle/Mall,0.25,2
+M010,Central Park,M,Flagship Park,Flagship Park,840.01,281
+M019,Coleman Playground,M,Playground,Neighborhood Plgd,2.61,5
+M015,Columbus Park,M,Playground,Neighborhood Plgd,3.233,1
+M017,Corlears Hook Park,M,Neighborhood Park,Neighborhood Park,4.355,1
+M208E,Crack Is Wack Playground,M,Playground,Neighborhood Plgd,1.369,2
+M289,East River Esplanade,M,Neighborhood Park,Sitting Area/Triangle/Mall,1.735,2
+M108T01,East River Esplanade,M,Waterfront Facility,Sitting Area/Triangle/Mall,8.595,114
+M108T,East River Walk,M,Waterfront Facility,Sitting Area/Triangle/Mall,4.602,87
+M029,Fort Tryon Park,M,Community Park,Large Park,67.213,41
+M028,Fort Washington Park,M,Community Park,Large Park,184.143,413
+M033,Hamilton Fish Park,M,Community Park,Neighborhood Plgd,4.3,1
+M208G,Harlem River Park,M,Triangle/Plaza,Sitting Area/Triangle/Mall,0.351,2
+M039,Harlem River Park,M,Parkway,Large Park,46.657,950
+M208D,Harlem River Park,M,Recreational Field/Courts,Neighborhood Park,5.756,17
+M092A,Haven Avenue,M,Parkway,Sitting Area/Triangle/Mall,1.38,19
+M037,Highbridge Park,M,Community Park,Large Park,130.1,450
+M042,Inwood Hill Park,M,Community Park,Large Park,196.398,21
+M043,Isham Park,M,Community Park,Large Park,20.132,21
+M014,Jackie Robinson Park,M,Neighborhood Park,Large Park,12.772,5
+M048,Joan Of Arc Park,M,Neighborhood Park,Neighborhood Park,1.578,4
+M045,John Jay Park,M,Community Park,Neighborhood Plgd,3.312,2
+M144,John V. Lindsay East River Park,M,Community Park,Large Park,45.88,260
+M108A,Louis Cuvillier Park,M,Neighborhood Park,Neighborhood Plgd,2.752,15
+M058,Marcus Garvey Park,M,Community Park,Large Park,20.165,6
+M203D,Mary O'Connor Playground,M,Playground,Neighborhood Plgd,0.229,1
+M056,Morningside Park,M,Community Park,Large Park,29.888,29
+M241,Nathan Straus Playground,M,Jointly Operated Playground,JOP,0.851,1
+M208B,Park,M,Triangle/Plaza,Neighborhood Plgd,0.059,5
+M108B,Park,M,Parkway,Undeveloped,2.13,6
+M108J,Park,M,Strip,Undeveloped,0.188,3
+M092B,Park,M,Strip,Sitting Area/Triangle/Mall,1.494,17
+M060B,Park Avenue Malls,M,Mall,Sitting Area/Triangle/Mall,0.65,13
+M060A,Park Avenue Malls,M,Mall,Sitting Area/Triangle/Mall,0.23,1
+M060C,Park Avenue Malls,M,Mall,Sitting Area/Triangle/Mall,4.623,40
+M141,Percy E. Sutton Playground,M,Neighborhood Park,Neighborhood Plgd,1.635,8
+M108N,Peter Detmold Park,M,Neighborhood Park,Sitting Area/Triangle/Mall,0.588,1
+M369,Pier 42,M,Waterfront Facility,Pier,7.509,1
+M108G,Playground 103 CIII,M,Neighborhood Park,Neighborhood Plgd,1.052,1
+M070,Queensboro Oval,M,Recreational Field/Courts,Neighborhood Park,1.239,6
+M104,Randall's Island Park,M,Flagship Park,Flagship Park,254.3,268
+M140,Recreational Area,M,Community Park,Large Park,23.093,35
+M071,Riverside Park,M,Community Park,Flagship Park,253.168,220
+M072,Riverside Park,M,Neighborhood Park,Flagship Park,13.35,64
+M353,Riverside Park South,M,Community Park,Large Park,71.933,15
+M158,Robert Moses Playground,M,Playground,Neighborhood Plgd,1.093,2
+M105,Sara D. Roosevelt Park,M,Neighborhood Park,Large Park,7.85,3
+M080,Schiff Mall,M,Mall,Sitting Area/Triangle/Mall,0.376,7
+M082,Seward Park,M,Neighborhood Park,Neighborhood Plgd,3.361,1
+M300,Sherman Creek,M,Neighborhood Park,Neighborhood Park,15.383,2
+M077,St. Nicholas Park,M,Neighborhood Park,Large Park,22.74,11
+M076,St. Vartan Park,M,Neighborhood Park,Neighborhood Plgd,2.759,1
+M192,Stanley Isaacs Playground,M,Neighborhood Park,Neighborhood Plgd,1.227,2
+M086,Stuyvesant Square,M,Neighborhood Park,Neighborhood Park,3.928,1
+M108P,Sutton Parks,M,Triangle/Plaza,Sitting Area/Triangle/Mall,0.85,13
+M108R,Sutton Place Park,M,Neighborhood Park,Neighborhood Park,0.268,2
+M005,The Battery,M,Neighborhood Park,Flagship Park,21.88,39
+M360,The High Line,M,Community Park,Large Park,6.73,79
+M047,Thomas Jefferson Park,M,Community Park,Large Park,15.524,3
+M030,Thomas Paine Park,M,Triangle/Plaza,Sitting Area/Triangle/Mall,1.875,4
+M088,Tompkins Square Park,M,Neighborhood Park,Large Park,10.502,1
+M006,Tribeca Park,M,Triangle/Plaza,Sitting Area/Triangle/Mall,0.32,2
+M108F,Triboro Plaza,M,Triangle/Plaza,Sitting Area/Triangle/Mall,2.3,11
+M089,Union Square Park,M,Community Park,Neighborhood Park,6.51,10
+M107,Wards Island Park,M,Recreational Field/Courts,Flagship Park,170.7,163
+M308,Washington Market Park,M,Neighborhood Park,Neighborhood Plgd,2.15,2
+M376,West Harlem Piers,M,Waterfront Facility,Sitting Area/Triangle/Mall,4.712,1
+Q283,225 Street Malls,Q,Mall,Sitting Area/Triangle/Mall,0.402,6
+Q285,Al Stabile Playground,Q,Jointly Operated Playground,JOP,0.494,1
+Q262,Alameda Malls,Q,Mall,Sitting Area/Triangle/Mall,0.553,25
+Q001A,Alley Athletic Playground,Q,Recreational Field/Courts,Large Park,27.531,2
+Q001,Alley Pond Park,Q,Flagship Park,Large Park,635.514,547
+Q051,Archie Spigner Park,Q,Community Park,Large Park,10.79,14
+Q520,Arverne East Nature Preserve,Q,Nature Area,,32.86,16
+Q004,Astoria Park,Q,Community Park,Large Park,59.956,46
+Q005,Baisley Pond Park,Q,Community Park,Large Park,109.609,106
+Q387E,Baybridge Green,Q,Strip,STRIP,0.316,5
+Q007,Bayswater Park,Q,Community Park,Large Park,40.16,16
+Q162J,Beach 17 Playground,Q,Neighborhood Park,Neighborhood Plgd,13.75,6
+Q162H,Beach 30th Street Playground,Q,Neighborhood Park,Neighborhood Plgd,7.122,4
+Q162J01,Beach 9 Playground,Q,Neighborhood Park,Neighborhood Plgd,4.863,1
+Q268,Bell Malls,Q,Mall,Sitting Area/Triangle/Mall,1.652,47
+Q096,Belt Parkway,Q,Parkway,EXWY,202.647,686
+Q464,Brant Point Wildlife Sanctuary,Q,Nature Area,Large Park,19.693,1
+Q467,Broad Channel American Park,Q,Recreational Field/Courts,Large Park,18.768,3
+Q225,Broad Channel Veteran's Park,Q,Triangle/Plaza,Sitting Area/Triangle/Mall,0.565,1
+Q008,Brookville Park,Q,Community Park,Large Park,89.946,47
+Q316,Captain Dermody Triangle,Q,Triangle/Plaza,Sitting Area/Triangle/Mall,0.191,1
+Q052,Captain Tilly Park,Q,Neighborhood Park,Large Park,9.16,5
+Q386,Centreville Playground,Q,Neighborhood Park,Neighborhood Plgd,2.095,1
+Q346,Challenge Playground,Q,Jointly Operated Playground,JOP,2.035,1
+Q387D,Clearview's Tail,Q,Strip,Sitting Area/Triangle/Mall,0.012,1
+Q190,Corporal Ruoff Square,Q,Triangle/Plaza,Sitting Area/Triangle/Mall,0.084,3
+Q012,Crocheron Park,Q,Community Park,Large Park,45.79,6
+Q135,Cross Island Parkway,Q,Parkway,PKWY,326.895,6038
+Q021,Cunningham Park,Q,Flagship Park,Large Park,358,302
+Q100A,Daniel Carter Beard Mall,Q,Triangle/Plaza,Sitting Area/Triangle/Mall,0.658,1
+Q307,Delphin H. Greene Playground,Q,Jointly Operated Playground,JOP,2.8,1
+Q121,Detective Keith L Williams Park,Q,Community Park,Large Park,7.683,1
+Q493,Discovery Garden,Q,Garden,Greenthumb,0.294,1
+Q411,Douglaston Park Golf Course,Q,Managed Sites,Large Park,104.6,10
+Q459,Dubos Point Wildlife Sanctuary,Q,Nature Area,Large Park,53.298,7
+Q040,Elmjack Mall,Q,Mall,Sitting Area/Triangle/Mall,0.241,13
+Q099,Flushing Meadows Corona Park,Q,Flagship Park,Flagship Park,870.761,1046
+Q015,Forest Park,Q,Flagship Park,Flagship Park,506.86,365
+Q458,Fort Totten Park,Q,Neighborhood Park,Large Park,60.394,95
+Q126,Francis Lewis Park,Q,Neighborhood Park,Large Park,16.831,4
+Q098,Frank D. O'Connor Playground,Q,Neighborhood Park,Neighborhood Plgd,1.537,1
+Q445,Frank Golden Park,Q,Neighborhood Park,Large Park,11.422,6
+Q131,Frank Principe Park,Q,Community Park,Large Park,7.461,2
+Q506,Gateway Park,Q,Neighborhood Park,Neighborhood Park,0.901,1
+Q094D,Gemini Fields,Q,Recreational Field/Courts,Neighborhood Park,10.761,6
+Q084,Grand Central Parkway,Q,Parkway,EXWY,160.415,1094
+Q084A,Grand Central Parkway Extension,Q,Parkway,EXWY,233.073,2757
+Q359,Haggerty Park,Q,Neighborhood Park,Neighborhood Plgd,3.867,1
+Q226,Hallets Cove Playground,Q,Neighborhood Park,Neighborhood Park,5.84399754,5
+Q089B,Harvey Park,Q,Community Park,Large Park,9.154,1
+Q133B,Hempstead Bench Spread,Q,Triangle/Plaza,Sitting Area/Triangle/Mall,0.274,1
+Q020,Highland Park,Q,Community Park,Large Park,101.28,26
+Q440,Hilton Holiday Gardens,Q,Recreational Field/Courts,Undeveloped,1.2,1
+Q410,Hinton Park,Q,Neighborhood Park,Neighborhood Park,3.735,1
+Q360N,Hoffman Park,Q,Playground,Neighborhood Plgd,2.857,2
+Q454,Hook Creek Park,Q,Nature Area,Large Park,111.163,12
+Q220G,Hoover - Manton Playgrounds,Q,Neighborhood Park,Neighborhood Plgd,5.2,6
+Q471,Hunter's Point South Park,Q,Neighborhood Park,Neighborhood Park,22.809,28
+Q392,Idlewild Park,Q,Nature Area,Large Park,180.85,26
+Q134,Jack Breininger Park,Q,Neighborhood Park,Neighborhood Plgd,3.4,2
+Q083,Jackie Robinson Parkway,Q,Parkway,EXWY,72.75,427
+Q309,Jamaica Bay Park,Q,Nature Area,Large Park,149.54,19
+Q065,John Vincent Daniels Jr. Square,Q,Triangle/Plaza,Sitting Area/Triangle/Mall,0.254,4
+Q102,Juniper Valley Park,Q,Community Park,Large Park,55.639,39
+Q300,Kissena Corridor Park,Q,Community Park,Large Park,100.873,123
+Q300A,Kissena Corridor Park,Q,Community Park,Large Park,45.937,189
+Q024,Kissena Park,Q,Community Park,Large Park,237.147,36
+Q027,Laurelton Parkway,Q,Parkway,EXWY,59.612,226
+Q108,Laurelton Playground,Q,Neighborhood Park,Neighborhood Plgd,1.785,2
+Q388,Linnaeus Park,Q,Recreational Field/Courts,Neighborhood Park,2.066,1
+Q010A,Little Bay Park,Q,Community Park,Large Park,55.22,51
+Q096A,Locust Grove Civic Triangle,Q,Triangle/Plaza,Sitting Area/Triangle/Mall,0.315,1
+Q178,Mall Forty Two XLII,Q,Mall,Sitting Area/Triangle/Mall,1.429,41
+Q035,Mall Thirty Four XXXIV,Q,Mall,Sitting Area/Triangle/Mall,0.55,67
+Q022,Margaret I. Carman Green - Weeping Beech,Q,Playground,Neighborhood Plgd,2.6,1
+Q364,Marie Curie Playground,Q,Jointly Operated Playground,JOP,2.552,2
+Q259,Memorial Circle,Q,Triangle/Plaza,Sitting Area/Triangle/Mall,0.1,1
+Q030,Midland Malls,Q,Mall,Sitting Area/Triangle/Mall,1.803,49
+Q130,Motor Parkway,Q,Nature Area,EXWY,13.894,12
+Q281,Nakks Malls,Q,Mall,Sitting Area/Triangle/Mall,0.185,3
+Q037,Neponsit Mall,Q,Mall,Sitting Area/Triangle/Mall,0.76,7
+Q299,Overlook Park,Q,Nature Area,Sitting Area/Triangle/Mall,2.327,4
+Q360Y1,Park,Q,Strip,,0.004,1
+Q409,Park,Q,Strip,Sitting Area/Triangle/Mall,0.001,1
+Q357A,Park,Q,Strip,,0.03,2
+Q387C,Park,Q,Strip,Type 1,0.02,3
+Q433B,Park,Q,Strip,EXWY,0.003,1
+Q433A,Park,Q,Strip,EXWY,0.008,1
+Q522,Park,Q,Undeveloped,,0.957,17
+Q508,Park,Q,Nature Area,,1.226,3
+Q162H01,Park,Q,Nature Area,Neighborhood Plgd,1.14,1
+Q360P,Park Slope,Q,Strip,Sitting Area/Triangle/Mall,0.005,1
+Q092,Police Officer Edward Byrne Park,Q,Community Park,Neighborhood Plgd,4.966,1
+Q329,Pomonok Playground,Q,Jointly Operated Playground,JOP,3.596,1
+Q461,Powell's Cove Park,Q,Nature Area,Large Park,59.629,7
+Q453,Queens Farm Park,Q,Managed Sites,Large Park,47.08,3
+Q104,Queensbridge Park,Q,Community Park,Large Park,20.863,55
+Q048,Rainey Park,Q,Neighborhood Park,Large Park,8.09,3
+Q004A,Ralph Demarco Park,Q,Neighborhood Park,Neighborhood Park,5.82,5
+Q357B,Real Good Playground,Q,Playground,Neighborhood Plgd,1.598,5
+Q164,Rockaway Beach,Q,Waterfront Facility,Large Park,166.71,15
+Q050,Rockaway Beach,Q,Waterfront Facility,Large Park,31.5,38
+Q163,Rockaway Beach Boardwalk,Q,Waterfront Facility,Large Park,376.2,114
+Q162,Rockaway Beach and Boardwalk,Q,Waterfront Facility,Large Park,498.154,70
+Q162I,Rockaway Beach and Boardwalk,Q,Waterfront Facility,Mall,3.809,5
+Q371,Rockaway Community Park,Q,Community Park,Large Park,255.4,26
+Q219,Rockaway Freeway,Q,Parkway,Large Park,8.422,683
+Q448,Roy Wilkins Recreation Center,Q,Community Park,Large Park,56.831,22
+Q469,Seagirt Ave Wetlands,Q,Nature Area,Undeveloped,5.323,1
+Q465,Socrates Sculpture Park,Q,Neighborhood Park,Neighborhood Park,6.28,6
+Q277,South Gate Mall,Q,Mall,Sitting Area/Triangle/Mall,0.145,4
+Q165,Spring Creek Park Addition,Q,Nature Area,Large Park,50.436,8
+Q107,Springfield Park,Q,Community Park,Large Park,23.543,21
+Q174A,St. Michael's Playground,Q,Neighborhood Park,Neighborhood Plgd,5.43,1
+Q395,Steinway Playground,Q,Jointly Operated Playground,JOP,0.809,1
+Q498,Sunset Cove Park,Q,Nature Area,,9.375,1
+Q017,The Olde Towne of Flushing Burial Ground,Q,Neighborhood Park,Neighborhood Plgd,3.474,1
+Q066B,Triborough Bridge Playground B,Q,Playground,Neighborhood Plgd,1.295,2
+Q066C,Triborough Bridge Playground C,Q,Recreational Field/Courts,Neighborhood Plgd,0.46,2
+Q066D,Triborough Bridge Playground D,Q,Recreational Field/Courts,Neighborhood Plgd,0.46,3
+Q066E,Triborough Bridge Playground E,Q,Recreational Field/Courts,Neighborhood Plgd,0.46,2
+Q177,Tudor Malls,Q,Mall,Sitting Area/Triangle/Mall,0.137,3
+Q094,Tudor Park,Q,Community Park,Large Park,13.543,17
+Q452,Udalls Park Preserve,Q,Nature Area,Large Park,44.44,66
+Q451,Underbridge Dog Run,Q,Neighborhood Park,Sitting Area/Triangle/Mall,0.457,1
+Q472,Vernam Barbadoes Peninsula,Q,Nature Area,Large Park,23.958,1
+Q435,Vernon Mall,Q,Mall,Sitting Area/Triangle/Mall,0.135,1
+Q082,Wayanda Park,Q,Jointly Operated Playground,JOP,2.554,1
+R117,Alice Austen Park,R,Historic House Park,Large Park,15.524,5
+R052,Allison Pond Park,R,Nature Area,Large Park,9.2,1
+R120,Arden Woods,R,Nature Area,Large Park,146.126,19
+R171,Arlington Marsh Park,R,Undeveloped,,70.6,1
+R129,Blood Root Valley,R,Nature Area,Flagship Park,161.242,56
+R106,Bloomingdale Park,R,Community Park,Large Park,138.1,37
+R119,Blue Heron Park,R,Nature Area,Large Park,217.543,147
+R172,Brookfield Park,R,Neighborhood Park,Large Park,258.72,19
+R132,Bunker Ponds Park,R,Nature Area,Undeveloped,36.691,7
+R109,CPL. Thompson Park,R,Community Park,Large Park,10.5,2
+R005,Clove Lakes Park,R,Community Park,Large Park,193.423,70
+R006,Conference House Park,R,Nature Area,Large Park,286.572,213
+R123,Cottages Hill New Brighton Park,R,Neighborhood Park,Neighborhood Plgd,2.057,1
+R135,Crescent Beach Park,R,Nature Area,Large Park,111.53,43
+R115,Deere Park,R,Nature Area,Flagship Park,39.13085296,11
+R124,Eibs Pond Park,R,Nature Area,Large Park,16.505,2
+R153,Fairview Park,R,Community Park,Undeveloped,42.6,11
+R075A,Father Macris Park,R,Recreational Field/Courts,Large Park,13.469,8
+R158,Fort Hill Park,R,Nature Area,Undeveloped,0.845,1
+R046,Franklin D. Roosevelt Boardwalk and Beach,R,Waterfront Facility,Large Park,644.35,96
+R017,Freshkills Park,R,Community Park,Flagship Park,953.065,310
+R169,Goodhue Park,R,Neighborhood Park,Large Park,26.532,4
+R016,Great Kills Park,R,Nature Area,Large Park,334.502,222
+R071,Great Kills Veterans Playground,R,Jointly Operated Playground,JOP,1.065,1
+R088,High Rock Park,R,Nature Area,Flagship Park,94.1,20
+R131,Huguenot Ponds Park,R,Nature Area,Large Park,1.53,1
+R136,Hybrid Oak Woods Park,R,Nature Area,Undeveloped,9.763,3
+R048,Jones Woods Park,R,Nature Area,Large Park,16.93,12
+R042,Kaltenmeier Playground,R,Neighborhood Park,Neighborhood Plgd,1.02,4
+R140,King Fisher Park,R,Nature Area,Large Park,23.01,5
+R138,Kingdom Pond Park,R,Nature Area,Undeveloped,4.22,1
+R013,LaTourette Park & Golf Course,R,Flagship Park,Flagship Park,760.79,130
+R161,Laredo Avenue Parcel,R,Nature Area,Undeveloped,2.223,1
+R079,Lemon Creek Park,R,Waterfront Facility,Large Park,104.545,52
+R027,Long Pond Park,R,Nature Area,Large Park,91.086,14
+R142,Mariners Marsh Park,R,Undeveloped,Undeveloped,107.576,1
+R076,Markham Playground,R,Jointly Operated Playground,JOP,2.836,3
+R112,Meredith Woods,R,Nature Area,Undeveloped,37.064,693
+R083,North Shore Esplanade,R,Undeveloped,Undeveloped,0.731,4
+R066,North Shore Esplanade,R,Triangle/Plaza,Sitting Area/Triangle/Mall,1.521,6
+R078,Northerleigh Park,R,Neighborhood Park,Neighborhood Park,3.955,1
+R149,Ocean Breeze Park,R,Nature Area,Large Park,136.568,18
+R159,Old Place Creek Park,R,Nature Area,Undeveloped,44.733,14
+R162,Olmsted-Beil House Park,R,Historic House Park,Building,2.76,1
+R103,Park,R,Strip,Sitting Area/Triangle/Mall,0.006,1
+R102,Park,R,Strip,Sitting Area/Triangle/Mall,0.006,1
+R075F,Park,R,Strip,STRIP,0.071,6
+R075E,Park,R,Strip,Sitting Area/Triangle/Mall,0.113,3
+R098,Park,R,Parkway,Neighborhood Park,5.848,3
+R038B,Park,R,Nature Area,Neighborhood Park,5.765,1
+R017A,Plant Ecology Center and Nursery,R,Buildings/Institutions,Flagship Park,12.247,7
+R118,Reed's Basket Willow Swamp Park,R,Nature Area,Flagship Park,52.68328275,30
+R065,Richmond Parkway,R,Parkway,Large Park,350.983,1263
+R130,Saw Mill Creek Marsh,R,Nature Area,Large Park,181.923,17
+R045,Schmul Park,R,Neighborhood Park,Large Park,7.395,1
+R145,Seaside Wildlife Nature Park,R,Neighborhood Park,Neighborhood Park,20.907,3
+R022,Silver Lake Park,R,Community Park,Large Park,205.977,53
+R116,Snug Harbor Cultural Center,R,Historic House Park,Large Park,83.3,37
+R104,South Shore Country Club,R,Managed Sites,Large Park,173.994,15
+R010,Staats Circle,R,Triangle/Plaza,Sitting Area/Triangle/Mall,0.28,2
+R170,Stapleton Esplanade,R,Waterfront Facility,Neighborhood Park,4.605,5
+R143,Staten Island Industrial Park,R,Nature Area,Large Park,210.928,104
+R139,Tottenville Shore Park,R,Nature Area,Large Park,9.181,4
+R059,Von Briesen Park,R,Neighborhood Park,Large Park,13.938,13
+R101,Wegener Park,R,Nature Area,Undeveloped,3.464,1
+R030,Willowbrook Park,R,Community Park,Flagship Park,214.947,93
+R047,Willowbrook Parkway,R,Parkway,EXWY,198.481,952
+R031,Wolfe's Pond Park,R,Community Park,Large Park,302.693,97
+X148H,Admiral Farragut Playground,X,Playground,Neighborhood Plgd,1.359,2
+X179,Al Quiñones Playground,X,Jointly Operated Playground,JOP,1.793,3
+X001A,Aqueduct Walk,X,Community Park,Large Park,8.607,31
+X001,Aqueduct Walk,X,Community Park,Large Park,4.926,4
+X191A,Bicentennial Veterans Memorial Park,X,Neighborhood Park,Large Park,9.395,1
+X094,Bridge Park,X,Neighborhood Park,Large Park,7.156,159
+X002,Bronx Park,X,Flagship Park,Large Park,718.373,326
+X004,Bronx River Parkway,X,Parkway,EXWY,206.717,1365
+X183,Bruckner Playground,X,Jointly Operated Playground,JOP,1.053,1
+X055,Brust Park,X,Neighborhood Park,Neighborhood Plgd,1.79,6
+X007,Castle Hill Park,X,Neighborhood Park,Neighborhood Park,8.834,3
+X111,Cedar Playground,X,Neighborhood Park,Neighborhood Plgd,1.8,1
+X279,City Island Wetlands,X,Nature Area,Large Park,8.005,2
+X008,Claremont Park,X,Community Park,Large Park,38.536,22
+X088B,Clason Point Park,X,Community Park,Large Park,14.872,3
+X010,Crotona Park,X,Flagship Park,Large Park,127.5,26
+X011,Crotona Parkway Malls,X,Mall,Large Park,8.75,47
+X084,D'Onofrio Square,X,Triangle/Plaza,Sitting Area/Triangle/Mall,0.38,1
+X013,Devoe Park,X,Neighborhood Park,Neighborhood Park,5.44,1
+X019,Ewen Park,X,Neighborhood Park,Large Park,7.84,4
+X126,Ferry Point Park,X,Flagship Park,Large Park,398.09,56
+X150E,Fordham Landing Playground,X,Playground,Neighborhood Plgd,3.9,1
+X020,Fort Independence Playground,X,Playground,Neighborhood Plgd,3.02,1
+X047,Franz Sigel Park,X,Community Park,Large Park,15.99,7
+X150D,Gasoline Alley,X,Strip,EXWY,0.667,1
+X187,Givan Square,X,Playground,Sitting Area/Triangle/Mall,1.82,8
+X222,Gouverneur Playground,X,Playground,Neighborhood Plgd,0.977,1
+X271,Grant Park,X,Neighborhood Park,Neighborhood Park,4.72,1
+X262,Harding Park,X,Neighborhood Park,Neighborhood Plgd,2.16,1
+X118A,Harding Park Beautification Project,X,Garden,Greenthumb,1.16,1
+X370,Hart Island,X,Managed Sites,,119.095,46
+X080,Henry Hudson Park,X,Neighborhood Park,Large Park,8.972,2
+X110,Henry Hudson Parkway,X,Parkway,EXWY,54.1,318
+X120,Highbridge Park,X,Neighborhood Park,Sitting Area/Triangle/Mall,0.82,2
+X026,Hines Park,X,Playground,Neighborhood Plgd,0.383,3
+X025,Hugh J. Grant Circle,X,Triangle/Plaza,Sitting Area/Triangle/Mall,1.11,3
+X101,Hutchinson River Parkway,X,Parkway,EXWY,229.14,820
+X137,Jerome Park,X,Neighborhood Park,Neighborhood Park,4.359,1
+X260,Julio Carballo Fields,X,Recreational Field/Courts,Neighborhood Plgd,3.351,1
+X058,Keltch Park,X,Triangle/Plaza,Sitting Area/Triangle/Mall,0.287,1
+X261,Kwame Ture Recreation Center,X,Buildings/Institutions,Neighborhood Park,1.88,1
+X310,Locust Point Marina,X,Managed Sites,Building,22.07,4
+X030,Macombs Dam Park,X,Community Park,Large Park,44.174,133
+X095,Marcus Garvey Square,X,Triangle/Plaza,Sitting Area/Triangle/Mall,1.395,11
+X153,Merriam Playground,X,Playground,Neighborhood Plgd,2.944,3
+X057,Michel Triangle,X,Triangle/Plaza,Sitting Area/Triangle/Mall,0.28,1
+X033,Mosholu Parkway,X,Parkway,Large Park,80.936,105
+X081,Mount Eden Malls,X,Mall,Sitting Area/Triangle/Mall,1.682,24
+X294,Palmer Inlet,X,Nature Area,Undeveloped,7.49,1
+X148F4,Park,X,Undeveloped,Sitting Area/Triangle/Mall,0.759,2
+X148F3,Park,X,Undeveloped,Sitting Area/Triangle/Mall,0.592,2
+X148F1,Park,X,Undeveloped,Parking Lot,0.897,2
+X148F2,Park,X,Undeveloped,Sitting Area/Triangle/Mall,0.511,2
+X148J,Park,X,Strip,EXWY,0.083,3
+X195D,Park,X,Strip,,0.006,20
+X195C,Park,X,Strip,,0.007,4
+X195F,Park,X,Strip,,0.025,87
+X195B,Park,X,Strip,Sitting Area/Triangle/Mall,0.102,2
+X091,Park,X,Triangle/Plaza,Sitting Area/Triangle/Mall,0.187,1
+X225,Park,X,Undeveloped,Sitting Area/Triangle/Mall,0.022,2
+X226,Park,X,Undeveloped,Parking Lot,0.013,1
+X371,Park,X,Undeveloped,,3.876,37
+X039,Pelham Bay Park,X,Flagship Park,Flagship Park,2771.747,527
+X003,Pelham Parkway,X,Parkway,Large Park,108.91,146
+X138,Playground One Thirty Four CXXXIV,X,Neighborhood Park,Neighborhood Plgd,1.95,11
+X148H1,Prospect Playground,X,Jointly Operated Playground,JOP,1.438,2
+X088,Pugsley Creek Park,X,Nature Area,Large Park,68.017,25
+X263,Quarry Ballfields,X,Recreational Field/Courts,Neighborhood Park,4.417,3
+X034,Rev. T. Wendell Foster Park and Recreation Center,X,Community Park,Large Park,15.049,5
+X017,Richman (Echo) Park,X,Neighborhood Park,Neighborhood Park,4.385,3
+X335,Risse Street Park,X,Neighborhood Park,Greenthumb,0.806,1
+X348,River Avenue Parks,X,Playground,Neighborhood Plgd,0.67,1
+X142,Riverdale Park,X,Nature Area,Large Park,144.29,15
+X046,Seton Falls Park,X,Nature Area,Large Park,35.771,7
+X118,Soundview Park,X,Flagship Park,Large Park,269.415,131
+X090,Spuyten Duyvil Shorefront Park,X,Nature Area,Large Park,6.6,21
+X044,St. James Park,X,Neighborhood Park,Large Park,11.39,2
+X045,St. Mary's Park,X,Community Park,Large Park,35.311,3
+X147A,Starlight Park,X,Neighborhood Park,Large Park,17.256,6
+X050,Throgs Neck Park,X,Undeveloped,Parking Lot,0.444,1
+X082,University Malls,X,Mall,Sitting Area/Triangle/Mall,0.743,3
+X051,University Woods,X,Neighborhood Park,Neighborhood Park,3.306,2
+X092,Van Cortlandt Park,X,Flagship Park,Flagship Park,1146.43,287
+X093,Van Nest Park,X,Playground,Neighborhood Plgd,0.401,1
+X148L1,Virginia Park,X,Neighborhood Park,Sitting Area/Triangle/Mall,0.918,2
+X148D,Walton Slope,X,Parkway,Sitting Area/Triangle/Mall,0.55,5
+X038,Washington's Walk,X,Neighborhood Park,Neighborhood Park,4.637,7
+X209,Wave Hill,X,Historic House Park,Large Park,20.867,9
+X288,West Farms Rapids,X,Neighborhood Park,Neighborhood Park,1.016,2
+X217,Willis Playground,X,Jointly Operated Playground,JOP,1.882,1
+X237,Yankee Stadium Garages/Lots,X,Lot,Stadium,11.414,49

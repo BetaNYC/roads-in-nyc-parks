@@ -410,6 +410,14 @@ h4 {
         color: #141414;
     }
 
+    /* cil_table(full_height = TRUE). Lifting the cap is enough to stop vertical
+       scrolling; overflow-y stays `auto` because a box that scrolls on one axis
+       cannot be `visible` on the other -- the browser would force it back to
+       auto anyway -- and wide tables still need the horizontal scrollbar. */
+    .scroll-output--full {
+        max-height: none;
+    }
+
     /* The global `table-layout: fixed` above caps these tables at the container
        and squeezes every column to an equal share. Auto layout alone isn't
        enough where cil_table() sets explicit widths — those also need an
@@ -424,6 +432,14 @@ h4 {
         width: max-content;
     }
 
+    /* cil_table(unit = "%"). Fixed layout is what makes the injected <colgroup>
+       shares binding -- under auto layout the browser treats them as hints and
+       overrides them from content, which is the whole problem they solve. This
+       beats flextable's own `.cl-xxxxx{table-layout:auto}` on specificity. */
+    .scroll-output--pct table {
+        table-layout: fixed;
+    }
+
     /* dim_pretty() estimates header widths a hair under what the browser
        renders, so computed widths alone still wrap. A column narrower than its
        header grows to fit it. */
@@ -433,6 +449,14 @@ h4 {
         top: 0;
         z-index: 1;
         background-color: #ffffff;
+    }
+
+    /* That nowrap only helps where a column can widen to hold its header. A
+       fixed column can't, so it would send a long header across the divider
+       instead. This has to sit after the rule it undoes: both selectors carry
+       identical specificity, leaving source order to decide. */
+    .scroll-output--pct thead th {
+        white-space: normal;
     }
 
     .scroll-output::-webkit-scrollbar {
@@ -498,8 +522,17 @@ footer {
     padding-bottom: 32px;
 }
 
-    footer a:link {
+    footer a:link, footer a:visited {
         text-decoration: none;
+    }
+
+    /* Copyright on the left, source code link on the right. Wraps to
+       two lines when there isn't room for both. */
+    .footer-fine-print {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 4px 16px;
     }
 
     footer span a:hover {

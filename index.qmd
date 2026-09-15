@@ -1,15 +1,23 @@
 ---
-title: "Example RADAR Report"
+title: "Identifying NYC Parks with Vehicle Traffic"
 format: 
   html:
     code-fold: true
 ---
+# Research Question
+BetaNYC's Research and Data Assistance Request service received the following request from [New Yorkers for Parks](https://www.ny4p.org/):
+
+> *Hi BetaNYC team! Would you be able to help us with a list of NYC Parks that allow personal vehicles to drive through them, prioritizing parks where pedestrians' and cyclists' experience in the park is shaped by vehicles (vs. Central Park transverse example, which is separated from people)? [...] Not sure how to go about this except by looking at a map, park by park and would love BetaNYC's support.*
+
+Only two New York City parks have banned vehicle traffic: Central Park in Manhattan and Prospect Park in Brooklyn[^1]. It appears there is no official list of parks that *do* permit vehicles in parks. A tentative list of parks that do may be derived from the assumption that **any park that contains a road segment suitable for vehicle traffic, with the exception of Central Park and Prospect Park, allows vehicle traffic.**
 
 ```{r}
 #| label: setup
 #| include: true
 #| warning: false
 #| message: false
+
+# Notebook setup
 
 # Use quarto render to generate a static site in /docs
 # Set github pages to deploy from main branch, /docs
@@ -21,7 +29,12 @@ reqd_pkgs <- c("flextable",
                "mapgl",
                "htmltools",
                "officer",
-               "forcats")
+               "forcats",
+               "socratadata",
+               "mapgl",
+               "mapview",
+               "DBI",
+               "RPostgres")
 
 install.packages(
   setdiff(
@@ -35,277 +48,294 @@ lapply(reqd_pkgs, library, character.only = TRUE) |>
   invisible()
 
 # If needed, ensure that the Quarto render and RStudio read the same environment vars
-# readRenviron(".Renviron")
+readRenviron(".Renviron")
 
-set_flextable_defaults(
-  font.family  = "Authentic Sans",
-  font.size    = 10,        # ~13px (flextable uses points)
-  border.color = "#0b0b0b",
-  background.color = "transparent",
-  padding.top    = 8,
-  padding.bottom = 4,
-  padding.left   = 0,
-  padding.right  = 16
+# Start Postgres via Docker, wait for healthcheck
+system("docker compose up -d --wait")
+
+# Set up connection from env
+con <- dbConnect(RPostgres::Postgres())
+
+# Enable PostGIS
+invisible(dbExecute(con, "CREATE EXTENSION IF NOT EXISTS postgis"))
+
+# Get cil_table()
+source("cil_table.R")
+```
+
+# Available Data
+
+Two data sources can be used to derive the list:
+
+1. [Parks Properties](https://data.cityofnewyork.us/Recreation/Parks-Properties/enfh-gkve/about_data)
+2. [NYC Street Centerline](https://data.cityofnewyork.us/City-Government/Centerline/inkn-q76z/about_data)
+
+## Parks Properties
+
+The Parks Properties dataset description carries the caveat:
+
+> *This dataset identifies property managed partially or solely by NYC Parks. This data has been produced in whole or part using secondary data. Data accuracy is limited by the scale and accuracy of the original sources. Site-specific conditions should be field-verified. *
+
+At least two ambiguities are described above. One is the official-unofficial nature of the data. It is provided by to NYC Open Data by the Department of Parks, but it is comprised of secondary data (at least in part, or maybe in whole -- another ambiguity. Does the Department of Parks not know what properties are under their jurisdiction?). The other is that it is unclear what types of properties are included in the dataset. Are they all parks? A mixture of parks and something else? We can take a look at the unique combinations of `class`, `subcategory`, and `typecategory`:
+
+```{r}
+invisible(
+  property_types <- soc_read(
+    "https://data.cityofnewyork.us/Recreation/Parks-Properties/enfh-gkve.json",
+    query = soc_query(
+      select = "distinct class, subcategory, typecategory"
+    )
+  )
 )
 
-# Wraps a data frame in a CIL-styled flextable ready to embed in the page.
-# Columns size to their content by default. `widths` overrides that: one value
-# per column, or named values setting just those columns. `max_width` caps the
-# fitted widths, never the ones `widths` names. `full_height = TRUE` drops the
-# 400px cap so the whole table renders inline without a vertical scrollbar.
-# `unit = "%"` reads `widths` as shares of a full-width table instead of
-# absolute sizes, which is how two tables are given matching columns.
-# `fill` is a named vector of cell text -> background colour, letting a
-# category be scanned down a column by colour as well as read.
-# Usage: data |> cil_table(widths = c("Purpose of Funds" = 4))
-#        data |> cil_table(widths = c(39, 61), unit = "%")
-#        data |> cil_table(fill = c("Heavy Rain" = "#d1ddee"))
-cil_table <- function(data, widths = NULL, heights = NULL,
-                      max_width = NULL, unit = "in", full_width = TRUE,
-                      full_height = FALSE, fill = NULL) {
-  ft <- flextable(data)
-  pct <- identical(unit, "%")
-  # Percentages never reach flextable, so they don't take the fitted path below.
-  fitted <- !pct && !(is.null(widths) && is.null(max_width))
-
-  if (pct) {
-    if (is.null(widths)) {
-      stop("`unit = \"%\"` sets column shares, so it needs `widths`.", call. = FALSE)
-    }
-    if (!is.null(max_width)) {
-      stop("`max_width` caps fitted widths in absolute units; `unit = \"%\"` ",
-           "sets shares outright. Use one or the other.", call. = FALSE)
-    }
-    if (!full_width) {
-      stop("Percentage widths are shares of a full-width table. Leave ",
-           "`full_width = TRUE`.", call. = FALSE)
-    }
-    if (!is.null(heights)) {
-      # `unit` covers heights too, and a row can't be a percentage of anything.
-      stop("`heights` needs an absolute unit, which `unit = \"%\"` overrides. ",
-           "Set column shares and row heights in separate calls.", call. = FALSE)
-    }
-    if (length(widths) != ncol(data)) {
-      # Named subsets work for absolute widths because dim_pretty() supplies a
-      # baseline for the columns left out. Shares have no such baseline.
-      stop("`widths` has ", length(widths), " value(s) but `data` has ",
-           ncol(data), " column(s). Percentage widths need one per column.",
-           call. = FALSE)
-    }
-  }
-
-  if (fitted && full_width) {
-    stop("`full_width` stretches columns to the container; `widths`/`max_width` ",
-         "pin them. Use one or the other.", call. = FALSE)
-  }
-
-  if (!fitted) {
-    # Browser-side content fitting, like Excel's Autofit. width = 0 leaves the
-    # table unconstrained; width = 1 would stretch it to 100% regardless of text.
-    ft <- set_table_properties(ft, if (full_width) 1 else 0, layout = "autofit")
-  } else {
-    # Fitted widths are the baseline, capped by max_width, then overridden by
-    # anything `widths` names. "autofit" discards widths, so this must be fixed.
-    fit <- unlist(dim_pretty(ft)$widths)
-    if (!is.null(max_width)) fit <- pmin(fit, max_width)
-    if (is.null(widths)) {
-      widths <- fit
-    } else if (!is.null(names(widths)) && all(nzchar(names(widths)))) {
-      unknown <- setdiff(names(widths), names(data))
-      if (length(unknown)) {
-        stop("`widths` names no such column: ", paste(unknown, collapse = ", "),
-             call. = FALSE)
-      }
-      fit[match(names(widths), names(data))] <- widths
-      widths <- fit
-    } else if (length(widths) != ncol(data)) {
-      # Otherwise they land on the first columns, misaligning every one.
-      stop("`widths` has ", length(widths), " value(s) but `data` has ",
-           ncol(data), " column(s). Give one width per column, or name them.",
-           call. = FALSE)
-    }
-    ft <- set_table_properties(ft, layout = "fixed")
-    ft <- width(ft, j = seq_along(widths), width = widths, unit = unit)
-  }
-
-  if (!is.null(heights)) {
-    # Heights are only emitted under the "exact" rule; "auto" ignores them.
-    ft <- height(ft, height = heights, part = "body", unit = unit)
-    ft <- hrule(ft, rule = "exact", part = "body")
-  }
-
-  if (!is.null(fill)) {
-    unknown <- setdiff(names(fill), unlist(lapply(data, as.character)))
-    if (length(unknown)) {
-      stop("`fill` names a value no cell holds: ", paste(unknown, collapse = ", "),
-           call. = FALSE)
-    }
-    # bg() hands the function one column at a time, so the lookup is on the cell
-    # text itself. Anything unnamed -- ids, counts -- keeps the table's own
-    # background rather than picking up a colour by accident.
-    ft <- bg(ft, part = "body", bg = function(x) {
-      matched <- fill[as.character(x)]
-      ifelse(is.na(matched), "transparent", matched)
-    })
-  }
-
-  # flextable's width() speaks only in/cm/mm, and autofit emits no column widths
-  # at all, so shares are carried by markup instead: a <colgroup> the browser
-  # obeys once .scroll-output--pct switches the table to `table-layout: fixed`.
-  # Empty otherwise, leaving the sub() below a no-op.
-  colgroup <- if (pct) {
-    paste0("<colgroup>",
-           paste0(sprintf('<col style="width:%s%%;">', widths), collapse = ""),
-           "</colgroup>")
-  } else ""
-
-  ft |>
-    border_remove() |>
-    bold(bold = TRUE, part = "header") |>
-    hline(border = fp_border(color = "#0b0b0b", width = 1.5),  part = "header") |>
-    hline(border = fp_border(color = "#969696", width = 0.75), part = "body") |>
-    # hline() mirrors each rule onto the next row's top edge as well as the
-    # current row's bottom. Under the `border-collapse: separate` these tables
-    # need for sticky headers, the two edges stack instead of merging, so every
-    # interior rule renders at double weight -- only the final one, with no row
-    # below it, looks right. Clearing the tops leaves a single 0.75pt line.
-    border(border.top = fp_border(width = 0), part = "body") |>
-    padding(
-      padding.top = 0, padding.bottom = 4,
-      padding.left = 0, padding.right = 8,
-      part = "header"
-    ) |>
-    padding(
-      padding.left = 2, padding.right = 8,
-      part = "body"
-    ) |> 
-    # Both steps are needed to keep the table out of a shadow DOM, which no page
-    # CSS can reach: ft.shadow drops the static host, and the rename hides the
-    # wrapper from tabwid.js, which shadow-roots every .tabwid on DOMContentLoaded.
-    htmltools_value(ft.shadow = FALSE) |>
-    as.character() |>
-    sub(pattern = 'class="tabwid"', replacement = 'class="cil-tabwid"', fixed = TRUE) |>
-    sub(pattern = "(<table[^>]*>)", replacement = paste0("\\1", colgroup)) |>
-    HTML() |>
-    div(class = paste(
-      c("scroll-output",
-        if (fitted) "scroll-output--fit",
-        if (pct) "scroll-output--pct",
-        if (full_height) "scroll-output--full"),
-      collapse = " "
-    ))
-}
+cil_table(property_types)
 ```
 
-This branch is for a brief RADAR report example that includes examples of typical elements:
+`PARK` is the only `class` of property in the dataset. Based on the combinations of `subcategory` and `typecategory`, it may be possible to determine which properties may be excluded from our list of parks, but for now we'll consider each feature in the dataset to be a park.
 
-* Code blocks
-* Inline code
-* Hyperlinks 
-* Graphs
-* Interactive maps
-* Block quotes
+## NYC Street Centerline
 
-The code block above contains per-block rendering options, denoted by `#|`. Look, code formatting! Required packages are then written to a character vector `reqd_pkgs` which is used to compare against already-installed R packages using the `setdiff()` function.
+The centerline dataset is described as:
 
-Once packages are installed, they may be used by calling the `library()` function. The common packages used here are:
+> *The NYC Street Centerline (CSCL) is a road-bed representation of New York City streets containing address ranges and other information such as traffic directions, road types, segment types.*
 
-* `flextable`: used for tables, flexible and extensible, hence the name
-* `sf`: the standard package for geospatial work in R -- introduces spatial objects and operations
-* `tidyverse`: a collection of packages used for working with data, all centered around the [tidy]("https://vita.had.co.nz/papers/tidy-data.pdf") framework
-* `mapgl`: an R implementation of the two common OpenGL-based map frameworks, Mapbox GL JS and MapLibre GL JS
-
-Let's set up some elements using the built-in datasets that come with R and the above packages.
-
-To render the report as `docs/index.html`, run `quarto render index.qmd` from the command line in the repo root.
-
-One of the packages in `tidyverse` is the popular `ggplot2`, used to create data analysis graphics using the "Grammar of Graphics". A useful reference is the online book [ggplot2: Elegant Graphics for Data Analysis (3e)]("https://ggplot2-book.org/"), which was made with Quarto!
-
-The number of diamonds by color and cut in the built in `diamonds` data set can be visualized using a stacked bar chart. We'll define the category color manually:
+This brief description implies that this dataset is entirely composed of streets, i.e. surfaces for vehicles to travel. However, taking a look at the `rw_type` reveals that not to be the case:
 
 ```{r}
-#| out-width: 100%
-#| code-fold: false
+street_types <- property_types <- soc_read(
+  "https://data.cityofnewyork.us/City-Government/Centerline/inkn-q76z.json",
+  query = soc_query(
+    select = "distinct rw_type"
+  )
+)
 
-ggplot(data = diamonds,
-       aes(color, fill = cut)) +
-  geom_bar() + 
-  xlab("Color Category") +
-  ylab("Count") +
-  labs(title = "Diamonds by Color and Cut",
-       subtitle = "Source: diamonds (built-in dataset)") +
-  scale_fill_discrete(name = "Color Category",
-                      palette = c("#f1eef6",
-                                  "#bdc9e1",
-                                  "#74a9cf",
-                                  "#2b8cbe",
-                                  "#045a8d")) +
-  theme_gray(base_size = 16)
+street_types <- street_types |> 
+  mutate(`Roadway Type` = case_when(
+    rw_type == 1 ~ "Street",
+    rw_type == 2 ~ "Highway",
+    rw_type == 3 ~ "Bridge",
+    rw_type == 4 ~ "Tunnel",
+    rw_type == 5 ~ "Boardwalk",
+    rw_type == 6 ~ "Path/Trail",
+    rw_type == 7 ~ "StepStreet",
+    rw_type == 8 ~ "Driveway",
+    rw_type == 9 ~ "Ramp",
+    rw_type == 10 ~ "Alley",
+    rw_type == 11 ~ "Unknown",
+    rw_type == 12 ~ "Non-Physical Street Segment",
+    rw_type == 13 ~ "U Turn",
+    rw_type == 14 ~ "Ferry Route",
+  ))
+
+street_types |>
+  arrange(rw_type) |>
+  mutate(rw_type = as.character(rw_type)) |>
+  cil_table(widths = c(15, 85),
+            unit = "%")
 ```
 
-Virtually every element of a `ggplot` graphic can be modified. Let's say we want to remove the panel shading, leaving only y-axis major grid lines in a light grey, and update the text color to a softer black:
+We'll want to exclude segments where `rw_type` is `6` to keep paths/trails from counting as a site for vehicular traffic. It's possible that other roadway types should be excluded, but for now, only `Path/Trail` will be. 
+
+# Considerations
+
+One consideration for this analysis are large parks spanning city streets. Take, for example, McCarren Park in Greenpoint, Brooklyn, which is comprised of five separate areas:
 
 ```{r}
-#| out-width: 100%
-#| code-fold: false
+mccarren <- soc_read(
+  "https://data.cityofnewyork.us/Recreation/Parks-Properties/enfh-gkve.json",
+  query = soc_query(
+    where = "signname = 'McCarren Park'" 
+  )
+)
 
-ggplot(data = diamonds,
-       aes(color, fill = cut)) +
-  geom_bar() + 
-  xlab("Color Category") +
-  ylab("Count") +
-  labs(title = "Diamonds by Color and Cut",
-       subtitle = "Source: diamonds (built-in dataset)") +
-  scale_fill_discrete(name = "Color Category",
-                      palette = c("#f1eef6",
-                                  "#bdc9e1",
-                                  "#74a9cf",
-                                  "#2b8cbe",
-                                  "#045a8d")) +
-  scale_y_continuous( breaks = seq(0, 30000, by = 5000)) +
-  theme_gray(base_size = 16) +
-  theme(
-    panel.background = element_blank(),
-    panel.grid.major.y = element_line(color = "grey80"),
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor.x = element_blank(),
-    axis.ticks = element_blank(),
-    text = element_text(color = "#141414"),
-    axis.text = element_text(color = "#141414")
+maplibre(
+  bounds = mccarren |> st_buffer(dist = 150),
+  style = carto_style("positron")
+) |> 
+  add_line_layer(
+    id = "mccarren-park",
+    source = mccarren,
+    line_color = "#3258a3",
+    line_opacity = 0.85,
+    line_width = 2
   )
 ```
 
-And so and and so on. LLMs are good with helping with the arcane little tweaks for plots.
-
-The `sf` package has a built in dataset of SIDS sample data in North Carolina. Let's use `mapgl` to take a look at area by county:
+If our consideration of a park that permits vehicle traffic is strict, McCarren Park will not qualify unless there are road segments *within* any of the separate areas. In order to capture the broader definition used by New Yorkers for Parks of "parks where pedestrians' and cyclists' experience in the park is shaped by vehicles", we can use the **convex hull** operation, which is analogous to the area enclosed by wrapping a rubber band around multi-part areas:
 
 ```{r}
-#| message: false
-#| warning: false
-#| code-fold: false
-#| out-height: 800px
+mcc_ch <- mccarren |> st_drop_geometry()
 
-nc <- st_read(system.file("shape/nc.shp", package="sf"),
-              quiet = TRUE)
+mcc_ch$geometry <- st_convex_hull(mccarren$multipolygon)
 
-maplibre_view(nc, column = "AREA")
+st_geometry(mcc_ch) <- mcc_ch$geometry
+
+
+maplibre(
+  bounds = mccarren |> st_buffer(dist = 150),
+  style = carto_style("positron")
+) |> 
+  add_line_layer(
+    id = "mccarren-park",
+    source = mcc_ch,
+    line_color = "#3258a3",
+    line_opacity = 0.85,
+    line_width = 2
+  )
+
 ```
-<br/ >
-How about a table of the same information? Flextable is a little tricky in that its output is rendered as an HTML widget that generates its own HTML that gets injected into the page. To control the vertical height and overflow using `styles.css` you have to wrap the class using the `html_tools` package:
-```{r}
-#| code-fold: FALSE
 
-nc |>
+Care must be taken with this approach, though, as the operation may introduce roads into the resulting area that are an artifact. See above along the southwest border of the feature where North 12th Street now falls within the new park area, where it didn't overlap before. 
+
+**All to say: This more inclusive definition of park area by necessity introduces false positives into the list. Manual review is required**
+
+# Methodology
+
+1. Fetch road segments which are not `Path/Trail`
+2. Fetch parks properties
+3. Get convex hull of property boundaries to enclose disjoint parks
+4. Use spatial inner join with `ST_INTERSECTS` spatial predicate to identify parks with intersecting street segments
+
+
+```{r, cache=TRUE, message=FALSE, warning=FALSE}
+centerline <- soc_read(
+  "https://data.cityofnewyork.us/City-Government/Centerline/inkn-q76z.json",
+  query = soc_query(
+    where = "rw_type != 6"
+  )
+) |> st_make_valid()
+
+parks <- soc_read(
+  "https://data.cityofnewyork.us/Recreation/Parks-Properties/enfh-gkve.json"
+) |> 
+  st_make_valid()
+
+# rename geometry cols
+st_geometry(centerline) <- "geom"
+st_geometry(parks) <- "geom"
+```
+
+```{r, message=FALSE, warning=FALSE}
+# Transform to state plane (ft), write to db
+st_write(st_transform(centerline, 2263), con, "centerline", delete_layer = TRUE, quiet = TRUE)
+st_write(st_transform(parks, 2263), con, "parks", delete_layer = TRUE, quiet = TRUE)
+
+# Compute convex hulls into new table for fast query (rather than as CTE)
+invisible(dbExecute(con, "DROP TABLE IF EXISTS parks_ch"))
+invisible(
+  dbExecute(con, "
+    CREATE TABLE parks_ch AS
+    SELECT gispropnum, signname, ST_ConvexHull(ST_MakeValid(geom)) AS geom
+    FROM parks")
+)
+invisible(dbExecute(con, "CREATE INDEX ON parks_ch USING GIST (geom)"))
+invisible(dbExecute(con, "ANALYZE parks_ch"))
+
+parks_with_roads_all <- dbGetQuery(con, "
+  SELECT p.gispropnum, p.signname, c.physicalid, c.rw_type
+  FROM parks_ch p
+  JOIN centerline c ON ST_Intersects(p.geom, c.geom)
+  ORDER BY p.gispropnum
+")
+
+dbDisconnect(con)
+
+park_list <- parks |> 
+  filter(gispropnum %in% parks_with_roads_all$gispropnum)
+
+road_list <- centerline |> 
+  filter(physicalid %in% parks_with_roads_all$physicalid)
+
+
+```
+
+With this approach, `r nrow(park_list)` of `r scales::comma(nrow(parks))` NYC parks are found to have overlapping roads. They are displayed below:
+
+```{r}
+maplibre(
+  bounds = park_list |> st_buffer(500),
+  style = carto_style("positron")
+) |>
+  add_source(
+    id = "parks-src",
+    data = select(park_list, gispropnum, signname),  # only the columns the map needs
+    tolerance = 0                                    # no simplification at any zoom
+  ) |>
+  # Transparent fill layer for tooltip 
+  add_fill_layer(
+    id = "parks-hover",
+    source = "parks-src",
+    fill_color = "#3258a3",
+    fill_opacity = 0,
+    tooltip = "signname"
+  ) |>
+  add_line_layer(
+    id = "parks-with-roads",
+    source = "parks-src",
+    line_color = "#3258a3",
+    line_opacity = 0.85
+  )
+```
+
+As noted earlier, the approach used to identify roads splitting up multi-part parks **necessarily introduces false positives**. The list of `r nrow(park_list)` needs to be manually reviewed. 
+
+Consider the case of Hoffman Park in Queens: The convex hull boundary (red) overlaps with the ramps on and off of the LIE from Woodhaven Boulevard, whereas the actual boundary (blue) does not:
+
+```{r, message=FALSE}
+hoffman_park_original <- parks |> 
+  filter(name311 == "Hoffman Park") |> 
+  select(gispropnum, name311)
+
+hoffman_park_ch <- hoffman_park_original |> 
+  st_drop_geometry()
+
+hoffman_park_ch$geom <- st_convex_hull(hoffman_park_original$geom)
+
+st_geometry(hoffman_park_ch) <- "geom"
+
+dir.create("output", showWarnings = FALSE)
+
+segment_counts <- count(parks_with_roads_all, gispropnum, name = "road_segments")
+
+park_list |>
   st_drop_geometry() |>
-  cil_table()
+  select(gispropnum, signname, borough, typecategory, subcategory, acres) |>
+  left_join(segment_counts, by = "gispropnum") |>
+  arrange(borough, signname) |>
+  write_csv("output/parks_with_roads.csv", na = "")
+
+invisible(
+  park_list |>
+    select(gispropnum, signname, borough, typecategory, subcategory, acres) |>
+    left_join(segment_counts, by = "gispropnum") |>
+    arrange(borough, signname) |>
+    st_write("output/parks_with_roads.geojson",
+             delete_dsn = TRUE,
+             quiet = TRUE)
+)
+
+maplibre(
+  bounds = hoffman_park_original |> st_buffer(10),
+  style = carto_style("positron")
+) |>  
+  add_line_layer(
+    id = "hoffman-original",
+    source = hoffman_park_original,
+    line_color = "#3258a3",
+    line_opacity = 0.85,
+    line_width = 2
+  ) |> 
+  add_line_layer(
+    id = "hoffman-ch",
+    source = hoffman_park_ch,
+    line_color = "#973835",
+    line_opacity = 0.85,
+    line_width = 2
+  )
 ```
-<br/ >
-Here's an example citation: Kittredge (2026)[^1].
 
-[^1]: [Kittredge, Andrew P. "The Title of a Fake, Nonexistent Paper" Pretend Journal 45.3 (2026): 741-895.](https://en.wikipedia.org/wiki/Smiley#/media/File:Smiley.svg)
+Review the tentative list of `r nrow(park_list)` parks: [parks_with_roads.csv](output/parks_with_roads.csv){download="parks_with_roads.csv"}
 
-And a bit of ol Lorem ipsum:
+Or download the spatial file here: [parks_with_roads.geojson](output/parks_with_roads.geojson){download="parks_with_roads.geojson"}
 
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-The end!
+[^1]: [NYC Parks: Car-Free Park Hours](https://www.nycgovparks.org/highlights/car-free-park-hours)

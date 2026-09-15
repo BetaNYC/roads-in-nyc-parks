@@ -1,6 +1,8 @@
 project:
   type: website
-  resources: images
+  resources: 
+    - images
+    - output
   output-dir: docs
 
 website:
@@ -22,3 +24,4 @@ format:
     fig-asp: 0.618
 execute:
   freeze: false
+  message: false
