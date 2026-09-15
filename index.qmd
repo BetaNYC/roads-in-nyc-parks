@@ -99,7 +99,7 @@ The centerline dataset is described as:
 
 > *The NYC Street Centerline (CSCL) is a road-bed representation of New York City streets containing address ranges and other information such as traffic directions, road types, segment types.*
 
-This brief description implies that this dataset is entirely composed of streets, i.e. surfaces for vehicles to travel. However, taking a look at the `rw_type` reveals that not to be the case:
+This brief description implies that this dataset is entirely composed of streets, i.e. surfaces for vehicles to travel. However, taking a look at the `rw_type` reveals that not to be the case[^2]:
 
 ```{r}
 street_types <- property_types <- soc_read(
@@ -198,6 +198,7 @@ Care must be taken with this approach, though, as the operation may introduce ro
 
 
 ```{r, cache=TRUE, message=FALSE, warning=FALSE}
+# Cache data download
 centerline <- soc_read(
   "https://data.cityofnewyork.us/City-Government/Centerline/inkn-q76z.json",
   query = soc_query(
@@ -220,17 +221,23 @@ st_geometry(parks) <- "geom"
 st_write(st_transform(centerline, 2263), con, "centerline", delete_layer = TRUE, quiet = TRUE)
 st_write(st_transform(parks, 2263), con, "parks", delete_layer = TRUE, quiet = TRUE)
 
-# Compute convex hulls into new table for fast query (rather than as CTE)
 invisible(dbExecute(con, "DROP TABLE IF EXISTS parks_ch"))
+
+# Compute convex hulls into new table for fast query (rather than as CTE)
 invisible(
   dbExecute(con, "
     CREATE TABLE parks_ch AS
     SELECT gispropnum, signname, ST_ConvexHull(ST_MakeValid(geom)) AS geom
     FROM parks")
 )
+
+# Create spatial index
 invisible(dbExecute(con, "CREATE INDEX ON parks_ch USING GIST (geom)"))
+
+# Analyze parks table
 invisible(dbExecute(con, "ANALYZE parks_ch"))
 
+# Query, write result to R object
 parks_with_roads_all <- dbGetQuery(con, "
   SELECT p.gispropnum, p.signname, c.physicalid, c.rw_type
   FROM parks_ch p
@@ -240,6 +247,7 @@ parks_with_roads_all <- dbGetQuery(con, "
 
 dbDisconnect(con)
 
+# Filter parks, roads based on query results
 park_list <- parks |> 
   filter(gispropnum %in% parks_with_roads_all$gispropnum)
 
@@ -293,6 +301,7 @@ hoffman_park_ch$geom <- st_convex_hull(hoffman_park_original$geom)
 
 st_geometry(hoffman_park_ch) <- "geom"
 
+# Create output csv, geojson
 dir.create("output", showWarnings = FALSE)
 
 segment_counts <- count(parks_with_roads_all, gispropnum, name = "road_segments")
@@ -339,3 +348,4 @@ Review the tentative list of `r nrow(park_list)` parks: [parks_with_roads.csv](o
 Or download the spatial file here: [parks_with_roads.geojson](output/parks_with_roads.geojson){download="parks_with_roads.geojson"}
 
 [^1]: [NYC Parks: Car-Free Park Hours](https://www.nycgovparks.org/highlights/car-free-park-hours)
+[^2]: [Metadata: Street Centerline](https://github.com/CityOfNewYork/nyc-geo-metadata/blob/main/Metadata/Metadata_StreetCenterline.md)
