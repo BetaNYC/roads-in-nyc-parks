@@ -76,7 +76,7 @@ The Parks Properties dataset description carries the caveat:
 
 > *This dataset identifies property managed partially or solely by NYC Parks. This data has been produced in whole or part using secondary data. Data accuracy is limited by the scale and accuracy of the original sources. Site-specific conditions should be field-verified. *
 
-At least two ambiguities are described above. One is the official-unofficial nature of the data. It is provided by to NYC Open Data by the Department of Parks, but it is comprised of secondary data (at least in part, or maybe in whole -- another ambiguity. Does the Department of Parks not know what properties are under their jurisdiction?). The other is that it is unclear what types of properties are included in the dataset. Are they all parks? A mixture of parks and something else? We can take a look at the unique combinations of `class`, `subcategory`, and `typecategory`:
+At least two ambiguities are described above. One is the official-unofficial nature of the data. It's provided to NYC Open Data by the Department of Parks, but it's comprised of secondary data (at least in part, or maybe in whole -- another ambiguity. Does the Department of Parks not know what properties are under their jurisdiction?). The other is that it's unclear what types of properties are included in the dataset. Are they all parks? A mixture of parks and something else? We can take a look at the unique combinations of `class`, `subcategory`, and `typecategory`:
 
 ```{r}
 invisible(
@@ -185,7 +185,7 @@ maplibre(
 
 ```
 
-Care must be taken with this approach, though, as the operation may introduce roads into the resulting area that are an artifact. See above along the southwest border of the feature where North 12th Street now falls within the new park area, where it didn't overlap before. 
+Care must be taken with this approach, though, as the operation may introduce roads into the resulting area that as an artifact. See above along the southwest border of the park where North 12th Street now falls within the new park area, where it didn't overlap before. 
 
 **All to say: This more inclusive definition of park area by necessity introduces false positives into the list. Manual review is required**
 
