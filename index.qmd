@@ -279,7 +279,7 @@ maplibre(
 
 As noted earlier, the approach used to identify roads splitting up multi-part parks **necessarily introduces false positives**. The list of `r nrow(park_list)` needs to be manually reviewed. 
 
-Consider the case of Hoffman Park in Queens: The convex hull boundary (red) overlaps with the ramps on and off of the LIE from Woodhaven Boulevard, whereas the actual boundary (blue) does not:
+Consider the case of Hoffman Park in Queens: The convex hull boundary (red) overlaps with the ramps on and off of the Long Island Expressway from Woodhaven Boulevard, whereas the actual boundary (blue) does not:
 
 ```{r, message=FALSE}
 hoffman_park_original <- parks |> 
