@@ -4,10 +4,6 @@ project:
     - images
     - output
   output-dir: docs
-  # What's changed page (BetaNYC standard): rebuild whats-changed.qmd from WHATS-CHANGED.md
-  # before every render. scripts/whats_changed.py is a copy from the BetaNYC workspace;
-  # never edit it here.
-  pre-render: python3 scripts/whats_changed.py render WHATS-CHANGED.md --format quarto --out whats-changed.qmd --repo-url https://github.com/BetaNYC/roads-in-nyc-parks
 
 website:
   navbar: false
