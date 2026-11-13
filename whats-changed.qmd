@@ -1,5 +1,6 @@
 ---
 title: "What's changed"
+anchor-sections: false
 ---
 
 ```{=html}
