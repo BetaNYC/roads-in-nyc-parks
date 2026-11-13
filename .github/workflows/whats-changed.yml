@@ -1,0 +1,26 @@
+# BetaNYC What's changed standard: on every pull request to main, check that WHATS-CHANGED.md
+# parses, that old entries were only appended to, and that whats-changed.qmd (the page source
+# built from it) is current. It does not render the site or run any analysis code.
+# scripts/whats_changed.py is a copy from the BetaNYC workspace; never edit it here.
+name: What's changed
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  whats-changed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # the append-only check compares with the base branch
+
+      - name: Check WHATS-CHANGED.md and the page source built from it
+        run: |
+          python3 scripts/whats_changed.py check WHATS-CHANGED.md --base-ref "origin/${{ github.base_ref }}"
+          python3 scripts/whats_changed.py render WHATS-CHANGED.md --format quarto --out whats-changed.qmd --repo-url https://github.com/BetaNYC/roads-in-nyc-parks --check
