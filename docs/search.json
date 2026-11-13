@@ -26,5 +26,12 @@
     "title": "Identifying NYC Parks with Vehicle Traffic",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nNYC Parks: Car-Free Park Hours↩︎\nMetadata: Street Centerline↩︎"
+  },
+  {
+    "objectID": "whats-changed.html",
+    "href": "whats-changed.html",
+    "title": "What’s changed",
+    "section": "",
+    "text": "BetaNYC\n            Civic Innovation Lab\n            Research and Data Assistance Request\n        \n    \n\n\n\n\n\n\n\n\nThis page lists the changes to the report Identifying NYC Parks with Vehicle Traffic that a reader would notice, newest first, including corrections when we published something wrong.\nHistory begins: 2026-09-15, the day the report was first published. Dates are the day each version went up on the site, in New York time. Corrections made before this date may be missing.Data refresh: none. The list of parks comes from NYC Open Data as it stood when the report was last built, and it does not update on its own.\nTo report a bug in the report, or to ask for a new feature, open an issue on GitHub.\n\n\n\nShow changes to\n Site\n Data\n\n\nShowing all 2 changes.\n\nA page that lists what changed in the report\nNovember 12, 2026\nTags: Site\nThis page is new. It lists each version of the report and any correction, newest first. The report links to it from its footer the next time the report is rebuilt.\nMore detail: The file this page is built from\nLink to this change: A page that lists what changed in the report\n\n\nThe report is published, with a list of 481 parks\nSeptember 15, 2026\nTags: Site, Data\nIn answer to a request from New Yorkers for Parks, the report lists NYC parks that appear to let cars drive through them: every park that contains a road segment cars can use, except Central Park and Prospect Park. It finds 481 of 2,059 parks, and says the list includes some parks that do not belong and needs to be checked by hand. The list can be downloaded as a spreadsheet (CSV) and as a map file (GeoJSON). Wording edits and a source note for the City's street map data followed the same day.\nMore detail: The commit · Same-day edits\nLink to this change: The report is published, with a list of 481 parks"
   }
 ]
